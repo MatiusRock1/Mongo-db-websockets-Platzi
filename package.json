@@ -17,8 +17,11 @@
     "url": "https://github.com/MatiusRock1/Mongo-db-websockets-Platzi/issues"
   },
   "homepage": "https://github.com/MatiusRock1/Mongo-db-websockets-Platzi#readme",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.2"
+  },
   "devDependencies": {
+    "dotenv": "^16.0.0",
     "nodemon": "^2.0.15"
   }
 }
