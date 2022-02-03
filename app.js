@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const path = require('path');
 const express = require('express');
+const router = express.Router();
 
 
 //configuracion de variables de entorno
@@ -11,9 +12,20 @@ dotenv.config({
 
 var app = express();
 
-app.use('/', function (req, res){
-    res.send("hola")
+app.use(router);
+
+router.get('/message', function(req, res){
+    res.send('lista de mensajes');
 });
+router.post('/message', function(req, res){
+    res.send('mensaje agregado');
+});
+router.delete('/message', function(req, res){
+    res.send('mensaje borrado');
+});
+// app.use('/', function (req, res){
+//     res.send("hola")
+// });
 
 app.listen(3000);
 
