@@ -2,7 +2,9 @@ const dotenv = require('dotenv');
 const path = require('path');
 const express = require('express');
 const router = express.Router();
-const bodyParser = require ('body-parser')
+const bodyParser = require ('body-parser');
+const response = require ('./network/response');
+const { ok } = require('assert');
 
 
 //configuracion de variables de entorno
@@ -21,14 +23,20 @@ router.get('/message', function(req, res){
     res.header({
         "custom-header" : "Nuestro header personalizado",
     });
-    res.send('lista de mensajes');
-    
+    response.success(req,res,'lista de mensajes');
 });
 router.post('/message', function(req, res){
     console.log(req.body);
     console.log(req.query);
+    if(req.query.error == "ok"){
+        response.success(req,res,'error creando', 400);
+    }
+    else {
+        response.success(req,res,'creado correctamente', 201);
+    }
     res.status(201);
-    res.send({error : '' , message : "creado correctamente"});
+    //res.send({error : '' , message : "creado correctamente"});
+    
 });
 router.delete('/message', function(req, res){
     res.status(201);
