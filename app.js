@@ -42,9 +42,8 @@ router.delete('/message', function(req, res){
     res.status(201);
     res.send({error : ''});
 });
-// app.use('/', function (req, res){
-//     res.send("hola")
-// });
+
+app.use('/app', express.static('public'));
 
 app.listen(3000);
 
