@@ -27,11 +27,12 @@ router.get('/message', function(req, res){
 router.post('/message', function(req, res){
     console.log(req.body);
     console.log(req.query);
-    res.send('mensaje agregado');
+    res.status(201);
+    res.send({error : '' , message : "creado correctamente"});
 });
 router.delete('/message', function(req, res){
-    
-    res.send('mensaje borrado');
+    res.status(201);
+    res.send({error : ''});
 });
 // app.use('/', function (req, res){
 //     res.send("hola")
