@@ -1,0 +1,24 @@
+{
+  "name": "mongo-db-websockets-platzi",
+  "version": "1.0.0",
+  "description": "proyecto de ejemplo de platzi",
+  "main": "index.js",
+  "scripts": {
+    "dev": "set NODE_ENV=develoment&& nodemon app.js",
+    "debug": "set NODE_ENV=develoment&& nodemon --inspect app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatiusRock1/Mongo-db-websockets-Platzi.git"
+  },
+  "author": "MatiusRock <jorgeluistrujilllo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatiusRock1/Mongo-db-websockets-Platzi/issues"
+  },
+  "homepage": "https://github.com/MatiusRock1/Mongo-db-websockets-Platzi#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
