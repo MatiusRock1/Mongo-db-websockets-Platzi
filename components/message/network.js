@@ -4,11 +4,13 @@ const response = require ('../../network/response.js');
 const controller = require('./controller');
 
 router.get('/', function(req, res){
-    console.log(req.headers);
-    res.header({
-        "custom-header" : "Nuestro header personalizado",
-    });
-    response.success(req,res,'lista de mensajes');
+   controller.getMessage()
+   .then((messageList) => {
+       response.success(req,res,messageList,200);
+   })
+   .catch(e => {
+        response.error(req,res,'error inesperado', 500);
+   });
 });
 router.post('/', function(req, res){
    controller.addMessage(req.body.user, req.body.message)
