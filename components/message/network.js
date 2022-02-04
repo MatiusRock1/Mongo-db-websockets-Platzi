@@ -25,9 +25,14 @@ router.post('/', function(req, res){
     //res.send({error : '' , message : "creado correctamente"});
     
 });
-router.delete('/', function(req, res){
-    res.status(201);
-    res.send({error : ''});
+router.patch('/:id', function(req,res) {   
+    controller.updateMessage(req.params.id,req.body.message)
+    .then((data) => {
+        response.success(req,res,data,200)
+    })
+    .catch(e => {
+        response.error(req,res,'Error interno',500);
+    });
 });
 
 module.exports = router;

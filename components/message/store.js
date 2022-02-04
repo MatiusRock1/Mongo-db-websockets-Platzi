@@ -11,7 +11,6 @@ db.connect('mongodb+srv://MatiusRock1:Sm4DCZhEicueY4Yb@cluster0.lva38.mongodb.ne
 console.log('[db]Conectada con exito');
 
 function addMessage(message){
-    //list.push(message);
     const myMessage = new Model(message);
     myMessage.save();
 }
@@ -21,9 +20,21 @@ async function getMessage(){
     return messages;
 }
 
+async function updateText(id,message){
+    const foundMessage = await Model.findOne({
+        _id: id
+    });
+    foundMessage.message = message;
+    const newMessage= await foundMessage.save();
+    return newMessage;
+}
+
 module.exports = {
     add : addMessage,
     list: getMessage,
+    updateText: updateText,
+
+
     //get
     //update
     //delete
