@@ -11,6 +11,7 @@ const router = require('./network/routes');
 dotenv.config({
     path: path.resolve(__dirname,process.env.NODE_ENV + '.env')
 });
+//creacion de conexion con base de datos mongo
 db.connectMongoDB(process.env.Mondodb)
 
 
