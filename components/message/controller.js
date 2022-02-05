@@ -17,9 +17,9 @@ function addMessage(user, message){
         resolve(fullMessage);
     });
 }
-function getMessage(user, message){
+function getMessage(filterUser){
     return new Promise((resolve,reject) => {
-        resolve(store.list());
+        resolve(store.list(filterUser));
     })
 }
  function updateMessage(id,message){
