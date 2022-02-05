@@ -32,8 +32,26 @@ function getMessage(filterUser){
         resolve(result);
     });
 }
+function deleteMessage(id) {
+    return new Promise ((resolve, reject) => {
+        
+        if(!id){
+            reject('id invalido');
+            return false;
+        }
+        store.remove(id)
+        .then(() => {
+            resolve();
+        })
+        .catch(e => {
+            reject(e);
+        })
+        
+    });
+}
 module.exports = {
     addMessage,
     getMessage,
     updateMessage,
+    deleteMessage,
 };
