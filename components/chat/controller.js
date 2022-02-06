@@ -2,7 +2,7 @@ const { version } = require('mongoose');
 const store = require('./store');
 
 function addChat(user){    
-        if(!user){
+        if(!user || !Array.isArray(user)){
             console.error('[messageController] No hay usuario');
             return Promise.reject('Los datos son incorrectos')
         }
