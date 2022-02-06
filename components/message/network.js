@@ -3,9 +3,20 @@ const router = express.Router();
 const response = require ('../../network/response.js');
 const controller = require('./controller');
 const multer = require('multer');
+const path = require('path');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/files/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
+    }
+  })
+
 
 const upload = multer({
-    dest: 'public/files'
+    storage: storage
 });
 
 router.get('/', function(req, res){
@@ -19,6 +30,7 @@ router.get('/', function(req, res){
    });
 });
 router.post('/',upload.single('file'), function(req, res){
+    console.log(req.file);
    controller.addMessage(req.body.chat,req.body.user, req.body.message,req.file)
    .then((fullMessage) => {
     response.success(req,res,fullMessage, 201);
