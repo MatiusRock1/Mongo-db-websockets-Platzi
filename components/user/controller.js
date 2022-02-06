@@ -13,10 +13,9 @@ function addUser(name){
         return store.add(user);      
     
 }
-function getMessage(filterUser){
-    return new Promise((resolve,reject) => {
-        resolve(store.list(filterUser));
-    })
+function getUser(filterUser){   
+    return (store.list(filterUser));
+   
 }
  function updateMessage(id,message){
     return new Promise(async(resolve,reject) => {
@@ -47,7 +46,7 @@ function deleteMessage(id) {
 }
 module.exports = {
     addUser,
-    getMessage,
+    getUser,
     updateMessage,
     deleteMessage,
 };

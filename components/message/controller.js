@@ -33,8 +33,7 @@ function getMessage(filterUser){
     });
 }
 function deleteMessage(id) {
-    return new Promise ((resolve, reject) => {
-        
+    return new Promise ((resolve, reject) => {        
         if(!id){
             reject('id invalido');
             return false;

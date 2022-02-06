@@ -9,7 +9,7 @@ function addUser(user){
 async function getUser(filterUser){
     let filter = {};
     if(filterUser !== null){
-        filter = {user: filterUser };
+        filter = {name: filterUser };
     }
     const messages = await Model.find(filter);
     return messages;
