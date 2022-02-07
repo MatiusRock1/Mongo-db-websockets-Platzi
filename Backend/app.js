@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const server = require('http').Server(app);
 const bodyParser = require ('body-parser');
 const socket = require('./socket.js');
@@ -16,6 +17,8 @@ dotenv.config({
 });
 //creacion de conexion con base de datos mongo
 db.connectMongoDB(process.env.Mondodb)
+//configuracion de cors
+//app.use(cors);
 //configuracion de socket
 socket.connect(server);
 
@@ -23,7 +26,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 router(app);
 
-server.listen(3000);
+server.listen(3000, function(){
+    console.log('Servidor iniciado en http:localhost:3000')
+})
 /*server.listen(8080, function(){
     console.log('Servidor iniciado en http:localhost:8080')
 })*/

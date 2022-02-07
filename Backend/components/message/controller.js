@@ -1,9 +1,9 @@
-
 const store = require('./store');
 const socket = require('../../socket').socket;
 
 
 function addMessage(chat,user, message,file){
+    
     return new Promise((resolve,reject) => {
         if(!chat ||!user || !message){
             console.error('[messageController] No hay usuario o mensaje');

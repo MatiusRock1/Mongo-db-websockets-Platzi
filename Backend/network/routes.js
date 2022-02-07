@@ -6,7 +6,7 @@ const routes = function(server){
     server.use('/message', message);
     server.use('/user',user);
     server.use('/chat',chat);
-    server.use('/app', express.static('public'));
+    server.use('/', express.static('public'));
 }
 
 
