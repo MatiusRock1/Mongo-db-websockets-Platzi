@@ -1,14 +1,14 @@
 const store = require('./store');
 const socket = require('../../socket').socket;
+const boom = require('@hapi/boom');
 
 
 
 function addMessage(chat,user, message,file){
     
     return new Promise((resolve,reject) => {
-        if(!chat ||!user || !message){
-            console.error('[messageController] No hay usuario o mensaje');
-            reject('Los datos son incorrectos');
+        if(!chat ||!user || !message){           
+            reject( boom.notFound('Parametro necesario'));
             return false;
         }
         let fileUrl = '';

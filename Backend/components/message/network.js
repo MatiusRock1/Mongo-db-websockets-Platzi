@@ -5,6 +5,7 @@ const controller = require('./controller');
 const multer = require('multer');
 const path = require('path');
 
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'public/files/')
@@ -26,7 +27,8 @@ router.get('/', function(req, res){
        response.success(req,res,messageList,200);
    })
    .catch(e => {
-        response.error(req,res,'error inesperado', 500);
+    next(e);
+    //response.error(req,res,'error inesperado', 500);
    });
 });
 router.post('/',upload.single('file'), function(req, res,next){
@@ -36,6 +38,7 @@ router.post('/',upload.single('file'), function(req, res,next){
     response.success(req,res,fullMessage, 201);
    })
    .catch(e => {
+       console.log(e);
        next(e);
     //response.error(req,res,'error creando', 400);
    });
