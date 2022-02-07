@@ -9,6 +9,7 @@ const socket = require('./socket.js');
 const db = require('./db');
 const { ok } = require('assert');
 const router = require('./network/routes');
+const middlewares = require('./network/middlewares');
 const { isObject } = require('util');
 
 //configuracion de variables de entorno
@@ -25,6 +26,7 @@ socket.connect(server);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 router(app);
+middlewares(app);
 
 server.listen(3000, function(){
     console.log('Servidor iniciado en http:localhost:3000')

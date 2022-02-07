@@ -29,14 +29,15 @@ router.get('/', function(req, res){
         response.error(req,res,'error inesperado', 500);
    });
 });
-router.post('/',upload.single('file'), function(req, res){
+router.post('/',upload.single('file'), function(req, res,next){
     console.log(req.file);
    controller.addMessage(req.body.chat,req.body.user, req.body.message,req.file)
    .then((fullMessage) => {
     response.success(req,res,fullMessage, 201);
    })
    .catch(e => {
-    response.error(req,res,'error creando', 400);
+       next(e);
+    //response.error(req,res,'error creando', 400);
    });
    
     
