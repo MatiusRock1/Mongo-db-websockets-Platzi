@@ -4,6 +4,8 @@ const response = require ('../../network/response.js');
 const controller = require('./controller');
 const multer = require('multer');
 const path = require('path');
+const {validatorHandler} = require('../../middlewares/validator.handler');
+const  {createMessageShema}= require('../schemas/messages.shema');
 
 
 var storage = multer.diskStorage({
@@ -31,7 +33,10 @@ router.get('/', function(req, res){
     //response.error(req,res,'error inesperado', 500);
    });
 });
-router.post('/',upload.single('file'), function(req, res,next){
+router.post('/',
+validatorHandler(createMessageShema,'Body'),
+upload.single('file'), (req, res,next) => {
+    console.log(req.body);
    controller.addMessage(req.body.chat,req.body.user, req.body.message,req.file)
    .then((fullMessage) => {
     response.success(req,res,fullMessage, 201);

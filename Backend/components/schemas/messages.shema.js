@@ -1,7 +1,17 @@
 const joi = require('joi');
 
-const user = joi.string().uuid();
-const chat = joi.string().uuid();
+const user = joi.string().guid({
+    version: [
+        'uuidv4',
+        'uuidv5'
+    ]
+});
+const chat = joi.string().guid({
+    version: [
+        'uuidv4',
+        'uuidv5'
+    ]
+});
 const message = joi.string().alphanum().min(3).max(60);
 
 const createMessageShema = joi.object({
@@ -11,5 +21,5 @@ const createMessageShema = joi.object({
 });
 
 module.exports = {
-    createMessageShema,
+     createMessageShema,
 }
